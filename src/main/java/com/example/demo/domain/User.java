@@ -56,4 +56,30 @@ public class User implements Serializable {
             return new User(this);
         }
     }
+
+    public Integer getUsername() {
+        return username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "username=" + getUsername() +
+                ", password='" + getPassword() + '\'' +
+                ", firstName='" + getFirstName() + '\'' +
+                ", lastName='" + getLastName() + '\'' +
+                '}';
+    }
 }
