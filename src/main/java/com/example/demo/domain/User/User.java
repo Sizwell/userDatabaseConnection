@@ -1,7 +1,6 @@
-package com.example.demo.domain;
+package com.example.demo.domain.User;
 
 import lombok.Data;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -22,7 +21,11 @@ public class User implements Serializable {
     private String firstName;
     private String lastName;
 
-    public User(){}
+    public User()
+    {
+
+    }
+
     public User(Builder builder){
         this.username = builder.username;
         this.password = builder.password;
