@@ -1,6 +1,7 @@
 package com.example.demo.domain.User;
 
 import lombok.Data;
+import org.hibernate.annotations.GenericGenerator;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -8,8 +9,15 @@ import java.io.Serializable;
 @Data
 @Entity
 public class User implements Serializable {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO,
+            generator="native")
+
+    @GenericGenerator(
+            name = "native",
+            strategy = "native"
+    )
     @Column(length = 8,nullable = false)
 
     /*

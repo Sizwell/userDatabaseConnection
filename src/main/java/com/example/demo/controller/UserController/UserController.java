@@ -15,22 +15,22 @@ public class UserController {
     @Autowired
     UserServiceImpl userService;
 
-    @RequestMapping(value = "/create/{password}/{firstName}/{lastName}",method = RequestMethod.POST)
+    @PostMapping(value = "/create/{password}/{firstName}/{lastName}")
     public @ResponseBody User create(@PathVariable String password, @PathVariable String firstName, @PathVariable String lastName) {
         return this.userService.create(UserFactory.createUser(password, firstName, lastName));
     }
 
-    @RequestMapping(value = "/read/{s}",method = RequestMethod.GET)
+    @GetMapping(value = "/read/{s}")
     public @ResponseBody User read(@PathVariable Integer s) {
         return this.userService.read(s);
     }
 
-    @RequestMapping(value = "/update/user",method = RequestMethod.PUT)
-    public @ResponseBody User update(@RequestBody User user) {
-        return this.userService.update(user);
+    @PutMapping(value = "/update/{s}/{password}/{firstName}/{lastName}")
+    public @ResponseBody User update(@PathVariable Integer s, @PathVariable String password, @PathVariable String firstName, @PathVariable String lastName) {
+        return this.userService.update(UserFactory.updateUser(s, password, firstName, lastName));
     }
 
-    @RequestMapping(value = "/delete/{s}",method = RequestMethod.DELETE)
+    @DeleteMapping(value = "/delete/{s}")
     public void delete(@PathVariable Integer s) {
         this.userService.delete(s);
     }
@@ -38,4 +38,33 @@ public class UserController {
     public @ResponseBody List<User> getAll() {
         return this.userService.getAll();
     }
+
+    /*
+    @Autowired
+    UserServiceImpl userService;
+
+    @PostMapping(value = "/create/{password}/{firstName}/{lastName}")
+    public @ResponseBody User create(@PathVariable String password, @PathVariable String firstName, @PathVariable String lastName) {
+        return this.userService.create(UserFactory.createUser(password, firstName, lastName));
+    }
+
+    @GetMapping(value = "/read/{s}")
+    public @ResponseBody User read(@PathVariable Integer s) {
+        return this.userService.read(s);
+    }
+
+    @PutMapping(value = "/update/{id}/{password}/{firstName}/{lastName}")
+    public @ResponseBody User update(@PathVariable Integer id, @PathVariable String password, @PathVariable String firstName, @PathVariable String lastName) {
+        return this.userService.update(UserFactory.updateUser(id, password, firstName, lastName));
+    }
+
+    @DeleteMapping(value = "/delete/{s}")
+    public void delete(@PathVariable Integer s) {
+        this.userService.delete(s);
+    }
+    @RequestMapping(value = "/getAll",method = RequestMethod.GET)
+    public @ResponseBody List<User> getAll() {
+        return this.userService.getAll();
+    }
+     */
 }

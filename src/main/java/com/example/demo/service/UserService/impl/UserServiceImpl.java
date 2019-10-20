@@ -14,10 +14,14 @@ public class UserServiceImpl implements UserService {
     @Autowired
     private UserRepository userRepository;
 
-    private UserServiceImpl(){}
+    private UserServiceImpl()
+    {
+
+    }
 
     public static UserService getUserService() {
-        if (userService == null)userService = new UserServiceImpl();
+        if (userService == null)
+            userService = new UserServiceImpl();
         return userService;
     }
 
