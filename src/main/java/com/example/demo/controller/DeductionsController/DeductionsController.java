@@ -32,12 +32,6 @@ public class DeductionsController {
     {
         return this.deductionsService.update(DeductionsFactory.updateDeduction(a, type, amount));
     }
-    /*
-    @PutMapping(value = "/update/{s}/{password}/{firstName}/{lastName}")
-    public @ResponseBody User update(@PathVariable Integer s, @PathVariable String password, @PathVariable String firstName, @PathVariable String lastName) {
-        return this.userService.update(UserFactory.updateUser(s, password, firstName, lastName));
-    }
-     */
 
     @DeleteMapping(value = "/delete/{x}")
     public void delete(@PathVariable Integer x)

@@ -22,12 +22,15 @@ public class User implements Serializable {
 
     /*
     @Column(length = 100)
-    private String username;
+    private String id;
     */
-    private Integer username;
-    private String password;
+    private Integer id;
     private String firstName;
     private String lastName;
+    private String gender;
+    private String addr;
+    private String password;
+
 
     public User()
     {
@@ -35,26 +38,27 @@ public class User implements Serializable {
     }
 
     public User(Builder builder){
-        this.username = builder.username;
-        this.password = builder.password;
+        this.id = builder.id;
         this.firstName = builder.firstName;
         this.lastName = builder.lastName;
+        this.gender = builder.gender;
+        this.addr = builder.addr;
+        this.password = builder.password;
     }
     public static class Builder{
-        private Integer username;
-        private String password;
+        private Integer id;
         private String firstName;
         private String lastName;
+        private String gender;
+        private String addr;
+        private String password;
 
 
-        public Builder username(Integer username){
-            this.username = username;
+        public Builder id(Integer id){
+            this.id = id;
             return this;
         }
-        public Builder password(String password){
-            this.password = password;
-            return this;
-        }
+
         public Builder firstName(String firstName){
             this.firstName = firstName;
             return this;
@@ -63,17 +67,29 @@ public class User implements Serializable {
             this.lastName = lastName;
             return this;
         }
+
+        public Builder gender(String gender)
+        {
+            this.gender = gender;
+            return this;
+        }
+
+        public Builder address(String address)
+        {
+            this.addr = address;
+            return this;
+        }
+        public Builder password(String password){
+            this.password = password;
+            return this;
+        }
         public User build(){
             return new User(this);
         }
     }
 
-    public Integer getUsername() {
-        return username;
-    }
-
-    public String getPassword() {
-        return password;
+    public Integer getid() {
+        return id;
     }
 
     public String getFirstName() {
@@ -84,13 +100,28 @@ public class User implements Serializable {
         return lastName;
     }
 
+    public String getGender() {
+        return gender;
+    }
+
+    public String getAddr() {
+        return addr;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+
     @Override
     public String toString() {
         return "User{" +
-                "username=" + getUsername() +
-                ", password='" + getPassword() + '\'' +
+                "id=" + getid() +
                 ", firstName='" + getFirstName() + '\'' +
                 ", lastName='" + getLastName() + '\'' +
+                "gender='" + getGender() + '\'' +
+                ", addr='" + getAddr() + '\'' +
+                ", password='" + getPassword() + '\'' +
                 '}';
     }
 }
